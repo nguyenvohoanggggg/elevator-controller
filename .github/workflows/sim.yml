@@ -1,0 +1,26 @@
+name: Verilog Simulation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt update
+          sudo apt install -y iverilog
+
+      - name: Compile design
+        run: |
+          iverilog -o sim rtl/elevator.v testbench/elevator_tb.v
+
+      - name: Run simulation
+        run: |
+          vvp sim
