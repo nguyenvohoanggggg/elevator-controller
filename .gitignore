@@ -1,0 +1,11 @@
+# ModelSim / Questa
+work/
+vsim.wlf
+transcript
+
+# Logs
+*.log
+
+# Temp / backup
+*~
+*.bak
